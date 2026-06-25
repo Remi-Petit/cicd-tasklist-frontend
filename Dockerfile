@@ -14,7 +14,10 @@ COPY . .
 RUN npm run build
 
 # ---- Stage 2: runtime (nginx) ----
-FROM nginx:1.27-alpine AS runner
+FROM nginx:1.29-alpine AS runner
+
+# Mettre à jour les paquets OS pour récupérer les derniers correctifs de sécurité
+RUN apk update && apk upgrade --no-cache
 
 # Configuration nginx personnalisée (SPA fallback + proxy /api)
 COPY nginx.conf /etc/nginx/conf.d/default.conf
