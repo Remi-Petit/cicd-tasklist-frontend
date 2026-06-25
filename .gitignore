@@ -28,6 +28,9 @@ coverage/
 reports/
 junit*.xml
 
+# SBOM générés
+sbom-*.json
+
 # Environment variables
 .env
 .env.local
